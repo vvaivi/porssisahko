@@ -7,4 +7,6 @@ COPY . .
 ENV CLASSPATH="packages/javax.mail.jar:packages/javax.activation_1.1.0.v201211130549.jar:.:packages/jsoup-1.17.2.jar"
 RUN javac -encoding utf8 *.java
 
+EXPOSE 8080
+
 CMD ["java", "JobScheduler"]

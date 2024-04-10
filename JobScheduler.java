@@ -23,6 +23,13 @@ public class JobScheduler {
                 }
             }
         }, initialDelay, 24 * 60 * 60, TimeUnit.SECONDS);
+
+        Server server = new Server();
+        try {
+            server.startServer();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private static void scheduleEmailSending(Hour hour) {
