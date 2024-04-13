@@ -24,10 +24,10 @@ public class Scraper {
             for (Element cell : cells) {
                 String[] parts = cell.text().split("\\s+");
 
-                String startHour = parts[0];
-                String price = parts[3].replace(',', '.');
+                String startHour = parts[0].replaceAll("[^0-9]", "");
+                String price = parts[3].replace(',', '.').replaceAll("[^-0-9.]", "");
 
-                hours[cells.indexOf(cell)] = new Hour(Double.parseDouble(price), Integer.parseInt(startHour));
+                hours[cells.indexOf(cell)] = new Hour(Double.parseDouble(price) / 100, Integer.parseInt(startHour));
             }
 
             return new Day(hours);
