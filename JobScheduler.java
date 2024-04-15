@@ -8,6 +8,10 @@ public class JobScheduler {
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
         
         long initialDelay = calculateInitialDelayToOneAtNight();
+
+        scheduler.scheduleAtFixedRate(() -> {
+            System.out.println("I'm alive");
+        }, 0, 1, TimeUnit.HOURS);
         
         scheduler.scheduleAtFixedRate(new Runnable() {
             @Override
